@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MF
 {
@@ -94,6 +95,8 @@ namespace MF
                         DisableField(true);
                         MessageBox.Show("Победа!");
                         timer1.Stop();
+
+                        WriteToFile();
                     }
 
                     break;
@@ -167,6 +170,15 @@ namespace MF
             }
         }
 
+        private void WriteToFile()
+        {
+            string fileName = "results.txt";
+            FileStream aFile = new FileStream(fileName, FileMode.OpenOrCreate);
+            StreamWriter sw = new StreamWriter(aFile);
+            aFile.Seek(0, SeekOrigin.End);
+            sw.WriteLine(difficult + ";" + time/10);
+            sw.Close();
+        }
         private void Play_Click(object sender, EventArgs e)
         {
             if (k % 2 == 0)
@@ -213,7 +225,9 @@ namespace MF
 
         private void PictureBox7_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
+            MainMenu newForm = new MainMenu();
+            newForm.Show();
         }
 
         private void Play_MouseEnter(object sender, EventArgs e)
