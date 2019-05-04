@@ -48,6 +48,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -68,6 +78,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,8 +98,17 @@
     <Compile Include="Results.Designer.cs">
       <DependentUpon>Results.cs</DependentUpon>
     </Compile>
+    <Compile Include="test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
@@ -96,6 +121,10 @@
     <EmbeddedResource Include="Results.resx">
       <DependentUpon>Results.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="test.resx">
+      <DependentUpon>test.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,9 +174,6 @@
     <None Include="Resources\9.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bomb.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\flag.png" />
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +213,19 @@
     <None Include="Resources\button_rekordy %281%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MetroFramework.txt" />
+    <None Include="Resources\ba.jpg" />
+    <None Include="Resources\4nqpbqgozzem5wf64n41bwf94n9pbq6osw.png" />
+    <None Include="Resources\1.jpg" />
     <Content Include="Resources\583ac15f0f27d158a5835b56.png" />
+    <None Include="Resources\kisspng-microsoft-minesweeper-minesweeper-classic-the-mine-mines-5ab7a0c37cbfe3.093165941521983683511.jpg" />
+    <None Include="Resources\back-arrow.png" />
+    <None Include="Resources\results1.png" />
+    <None Include="Resources\bomb.png" />
+    <None Include="Resources\time.png" />
+    <None Include="Resources\info.png" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\x-B6enDcx2Q.jpg" />
     <None Include="Resources\hardP.png" />
     <None Include="Resources\hard.png" />
     <None Include="Resources\mediumP.png" />

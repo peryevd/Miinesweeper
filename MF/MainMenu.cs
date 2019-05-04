@@ -7,22 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
+using MetroFramework.Components;
 
 namespace MF
 {
-    public partial class MainMenu : Form
+    public partial class MainMenu : MetroForm
     {
         public MainMenu()
         {
             InitializeComponent();
+            MetroStyleManager.Default.Style = MetroFramework.MetroColorStyle.Silver;
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            pictureBox2.Controls.Add(pictureBox3);
+            pictureBox2.Controls.Add(pictureBox4);
+            pictureBox2.Controls.Add(pictureBox7);
             p_easy.Visible = false;
             p_medium.Visible = false;
             p_hard.Visible = false;
             this.CenterToScreen();
+           pictureBox3.BackColor = Color.Transparent;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -128,6 +135,21 @@ namespace MF
             this.Hide();
             Results newForm = new Results();
             newForm.Show();
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

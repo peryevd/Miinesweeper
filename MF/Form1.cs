@@ -8,10 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using MetroFramework;
+using MetroFramework.Forms;
+using MetroFramework.Components;
 
 namespace MF
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroForm
     {
         int time = 0;
         int difficult = 0;
@@ -23,7 +26,9 @@ namespace MF
         public Form1(int dif)
         {
             InitializeComponent();
-
+            MetroStyleManager.Default.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Resizable = false;
+            this.ControlBox = false;
             difficult = dif;
         }
 
@@ -93,10 +98,15 @@ namespace MF
                     if (flag == true)
                     {
                         DisableField(true);
-                        MessageBox.Show("Победа!");
                         timer1.Stop();
+                        MessageBox.Show("Победа!");
+                       
 
                         WriteToFile();
+
+                        this.Close();
+                        MainMenu newForm = new MainMenu();
+                        newForm.Show();
                     }
 
                     break;
@@ -108,11 +118,22 @@ namespace MF
             this.CenterToScreen();
             this.BackColor = Color.White;
 
-            bomb_count.Text = bomb.ToString();
-           
             StartGame();
 
+            bomb_count.Text = bomb.ToString();
+                     
             timer1.Enabled = true;
+
+            _time.Text = "0";
+            _time.BackColor = Color.Transparent;
+
+            //pictureBox10.Controls.Add(play);
+            //pictureBox10.Controls.Add(settings);
+            //pictureBox10.Controls.Add(exit);
+            //pictureBox10.Controls.Add(pictureBox6);
+            //pictureBox10.Controls.Add(pictureBox7);
+            //pictureBox10.Controls.Add(bomb_count);
+            //pictureBox10.Controls.Add(_time);
         }
 
         private void CreateField()
@@ -145,15 +166,15 @@ namespace MF
                             break;
                     }
 
-                    pct.SizeMode = PictureBoxSizeMode.StretchImage;
+                   
                     pct.Name = "" + i;
                     pct.Tag = j;
                     pct.Text = "false";
                     pct.MouseDown += new MouseEventHandler(Pct_MouseClick);                
                     k++;
                     pct.Image = Properties.Resources.kvd;
-
-                    MasPicter[i, j] = pct;                  
+                    pct.SizeMode = PictureBoxSizeMode.StretchImage;
+                    MasPicter[i, j] = pct;
                 }
             }
         }
@@ -166,6 +187,9 @@ namespace MF
                 for (int j = 0; j < heig; j++)
                 {
                     Controls.Add(MasPicter[i,j]);
+                    MasPicter[i, j].BringToFront();
+                    MasPicter[i, j].BackColor = Color.Transparent;
+                    //pictureBox10.Controls.Add(MasPicter[i, j]);
                 }
             }
         }
@@ -179,6 +203,7 @@ namespace MF
             sw.WriteLine(difficult + ";" + time/10);
             sw.Close();
         }
+
         private void Play_Click(object sender, EventArgs e)
         {
             if (k % 2 == 0)
@@ -267,10 +292,46 @@ namespace MF
             exit.Width -= 10;
         }
 
+        private void Settings_Click(object sender, EventArgs e)
+        {
+            Help newForm = new Help();
+            newForm.Show();
+        }
+
+        private void PictureBox7_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void _time_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void Pct_MouseClick(object sender, MouseEventArgs e)
         {
             var pct = sender as PictureBox;
-            var color = Color.White;
+            var color = Color.Transparent;
             if (e != null && e.Button == MouseButtons.Left)
             {
                 if (pct.Text == "false")
